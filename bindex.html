@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="css/app.css" rel="stylesheet">
+    <title>TRMS App</title>
+</head>
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">TRMS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link"  href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="employee.html">Employees</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active"  aria-current="page" href="reimbursements.html">Reimbursements</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
+              
+            </ul>
+            <form class="d-flex">
+              <a href="login.html" class="btn btn-outline-success" type="submit">Log Out</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+            <h1 class="center">Reimbursements</h1>
+            <input id="reid" type="hidden" value="6">
+            <br>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Employee</th>
+                        <th>Justification</th>
+                        <th>Time Out</th>
+                        <th>Event Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Location</th>
+                        <th>Cost</th>
+                        <th>Coverage</th>
+                        <th>Description</th>
+                        <th>Grading Format</th>
+                        <th>Cutoff</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p>Nadia Krane</p></td>
+                        <td><p id="inputJust">-</p></td>
+                        <td><p id="inputTime">-</p></td>
+                        <td><p id="inputEvent">-</p></td>
+                        <td><p id="inputStart">-</p></td>
+                        <td><p id="inputEnd">-</p></td>
+                        <td><p id="inputLocation">-</p></td>
+                        <td><p id="inputCost">-</p></td>
+                        <td><p id="inputCovg">-</p></td>
+                        <td><p id="inputDescr">-</p></td>
+                        <td><p id="inputGrading">-</p></td>
+                        <td><p id="inputCutoff">-</p></td>
+                        <td><p id="inputStat">-</p></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="float: right;">
+                <button href="reimbursement_editor.html" class="btn btn-success" style="margin: 0px 20px 10px;" onclick="approveReimbursement()">Approve</button>
+                <button href="reimbursement_editor.html" class="btn btn-danger" style="margin: 0px 20px 10px;" onclick="denyReimbursement()">Deny</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    function getReimbursement() {
+
+        console.log("Getting Reimbursement");
+
+        let reid = document.getElementById("reid").value;
+        console.log(reid);
+
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+
+            if (this.readyState == 4 & this.status == 200) {
+                console.log(this.responseText);
+
+                let reimbursements = JSON.parse(this.responseText);
+
+                let reimbursement = reimbursements[reimbursements.length - 1];
+                console.log(reimbursement);
+                console.log(reimbursement.id);
+                populateTable(reimbursement);
+
+            }
+        };
+
+        url = "http://localhost:7000/reimbursements/";
+        xhr.open("GET", url, true);
+
+        xhr.send();
+    }
+
+
+    function populateTable(reimbursement) {
+
+        // let remid = document.getElementById("remid");
+        // remid.innerHTML = "2";
+
+        //remid.innerHTML = reimbursement.id;
+        inputJust.innerHTML = reimbursement.justification;
+        inputTime.innerHTML = reimbursement.timeOut;
+        inputEvent.innerHTML = reimbursement.event_type;
+        inputStart.innerHTML = reimbursement.startDate;
+        inputEnd.innerHTML = reimbursement.endDate;
+        inputLocation.innerHTML = reimbursement.location;
+        inputCost.innerHTML = reimbursement.cost;
+        inputCovg.innerHTML = reimbursement.cost * (reimbursement.coverage * .01);
+        inputDescr.innerHTML = reimbursement.description;
+        inputGrading.innerHTML = reimbursement.gradingFormat;
+        inputCutoff.innerHTML = reimbursement.cutoff;
+        //let msgNode = document.createElement("p");
+        //let fileNode = document.createElement("p");
+        //employeeNode.innerHTML = "Employee: " + reimbursement.employee.firstName + " " + reimbursement.employee.lastName;
+        inputStat.innerHTML = "pending Ben. Co. approval";
+
+    }
+
+    function approveReimbursement() {
+        inputStat.innerHTML = "approved";
+    }
+
+    function denyReimbursement() {
+        inputStat.innerHTML = "denied";
+    }
+
+    window.onload = getReimbursement;
+</script>
+
+
+
+</html>

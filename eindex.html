@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="css/app.css" rel="stylesheet">
+        <title>TRMS App</title>
+    </head>
+    <body>
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">TRMS</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link"  href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="employee.html">Employees</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active"  aria-current="page" href="reimbursements.html">Reimbursements</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                  </li>
+                  <!--li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li -->
+                  
+                </ul>
+                <form class="d-flex">
+                  <!--input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"-->
+                  <a href="login.html" class="btn btn-outline-success" type="submit">Log Out</a>
+                </form>
+              </div>
+            </div>
+          </nav>
+        <br>
+            <br>
+            <div id="addForm" class="row g-3">
+                <div id="dept-card">
+                    <div class="card-body">
+                        <h3 class="title">New Reimbursement</h3>
+                    <br>
+                    <br>
+                    <input id="reid" type="hidden" value="5">
+                    <br>
+                    <div class="form-group row">
+                        <label for="inputTime" class="col-sm-2 col-form-label"> Time Out : </label>
+                        <div class="col-md-4">
+                            <input type="number" class="form-control" id="inputTime" placeholder="in hours" value="">
+                        </div>
+                        <label for="inputName" class="col-sm-2 col-form-label"> Cost : </label>
+                        <div class="col-md-4">
+                            <input type="number" class="form-control" id="inputCost" placeholder="250" >
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label for="inputWorth" class="col-sm-2 col-form-label">Justification : </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputJust" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-2 col-form-label"> Employee Name : </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputName" placeholder="First and Last Name" value="Nadia Krane">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="inputEvent" class="col-sm-2 col-form-label">Event : </label>
+                    <div class="col-md-4">
+                        <!--input type="text" class="form-control" id="inputBirthdate" placeholder="University Courses"-->
+                        <!--label for="cars">Event Types:</label-->
+                        <select id="inputEvent" name="Event Types" class="form-control">
+                            <option value="University Courses">University Courses</option>
+                            <option value="Seminars">Seminars</option>
+                            <option value="Certification Preparation Classes">Certification Preparation Classes</option>
+                            <option value="Certification">Certification</option>
+                            <option value="Technical Training">Technical Training</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <label for="inputName" class="col-sm-2 col-form-label"> Coverage : </label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="inputCovg" placeholder="" >
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-2 col-form-label"> Start Date : </label>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" id="inputStart" placeholder="" >
+                    </div>
+                    <label for="inputName" class="col-sm-2 col-form-label"> End Date : </label>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" id="inputEnd" placeholder="" >
+                    </div>
+                    <label for="inputName" class="col-sm-2 col-form-label"> Location : </label>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" id="inputLocation" placeholder="California" >
+                    </div>
+                </div>
+                <br>
+                
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-2 col-form-label"> Description : </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputDescr" placeholder="" >
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-2 col-form-label"> Grading : </label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="inputGrading" placeholder="" >
+                    </div>
+                    <label for="inputName" class="col-sm-2 col-form-label"> Cutoff : </label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="inputCutoff" placeholder="" >
+                    </div>
+                </div>
+            
+                <br>
+                <div class="form-group row">
+                <div class="col-sm-12">
+                    <button id="formRight" type="button" class="btn btn-primary" onclick="addReimbursement()" style="margin: 0px 20px 10px;">Submit
+                        Reimbursement Request</button>
+                    <button id="formRight" type="button" class="btn btn-primary" onclick="getReimbursement()" style="margin: 0px 40px 10px 20px;">Get
+                        Reimbursements</button>
+                </div>
+            </div>
+            <br>
+            <p id="success"></p>
+            <br>
+
+            <input id="reid" type="hidden" value="6">
+            <br>
+            <!--p id="result" class="emp"></p>
+            <br-->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Justification</th>
+                        <th>Time Out</th>
+                        <th>Event Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Location</th>
+                        <th>Cost</th>
+                        <th>Coverage</th>
+                        <th>Description</th>
+                        <th>Grading Format</th>
+                        <th>Cutoff</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p id="remid">-</p></td>
+                        <td><p id="Just">-</p></td>
+                        <td><p id="Time">-</p></td>
+                        <td><p id="EventType">-</p></td>
+                        <td><p id="Start">-</p></td>
+                        <td><p id="End">-</p></td>
+                        <td><p id="Loc">-</p></td>
+                        <td><p id="Cost">-</p></td>
+                        <td><p id="Covg">-</p></td>
+                        <td><p id="Descr">-</p></td>
+                        <td><p id="Grading">-</p></td>
+                        <td><p id="Cutoff">-</p></td>
+                        <td><p id="Stat">-</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+</body> 
+
+<script>
+
+
+    function addReimbursement() {
+
+        console.log("Adding Reimbursement...");
+
+        //let claimValue = document.getElementById("inputClaim").value;
+        let justValue = document.getElementById("inputJust").value;
+        let timeValue = document.getElementById("inputTime").value;
+        let nameValue = document.getElementById("inputName").value;
+        let eventValue = document.getElementById("inputEvent").value;
+        let startValue = document.getElementById("inputStart").value;
+        let endValue = document.getElementById("inputEnd").value;
+        console.log(startValue);
+        console.log(endValue);
+        let locValue = document.getElementById("inputLocation").value;
+        let costValue = document.getElementById("inputCost").value;
+        let descrValue = document.getElementById("inputDescr").value;
+        let gradValue = document.getElementById("inputGrading").value;
+        let covgValue = document.getElementById("inputCovg").value;
+        let cutValue = document.getElementById("inputCutoff").value;
+
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function () {
+
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+
+                if (JSON.parse(this.responseText)) {
+                    document.getElementById("success").innerHTML = "Reimbursement Successfully Submitted!"
+                } else {
+                    document.getElementById("success").innerHTML = "Reimbursement was not Submitted!"
+                }
+            } else if (this.readyState == 4) {
+                document.getElementById("success").innerHTML = "Request was not successfully processed!"
+            }
+
+        }
+
+        let url = "http://localhost:7000/reimbursements";
+        xhttp.open("POST", url, true);
+
+        xhttp.setRequestHeader('Content-Type', 'application/json');
+
+        let reimbursement = {
+            justification: justValue,
+            timeOut: timeValue,
+            status: 'pending',
+            event_type: eventValue,
+            startDate: startValue, 
+            endDate: endValue, 
+            location: locValue, 
+            cost: costValue, 
+            coverage: covgValue,
+            description: descrValue, 
+            gradingFormat: gradValue,
+            cutoff: cutValue,
+            msg: null,
+            uploadFile: null,
+            employee: null
+        }
+
+        //The optional argument in the send() method allows us to provide a body.
+        xhttp.send(JSON.stringify(reimbursement));
+
+    }
+
+    function getReimbursement() {
+
+        console.log("Getting Reimbursement");
+
+        let reid = document.getElementById("reid").value;
+        console.log(reid);
+
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+
+            if (this.readyState == 4 & this.status == 200) {
+                console.log(this.responseText);
+
+                let reimbursements = JSON.parse(this.responseText);
+
+                let reimbursement = reimbursements[reimbursements.length - 1];
+                console.log(reimbursement);
+                console.log(reimbursement.event_type);
+                populateTable(reimbursement);
+
+            }
+        };
+
+        url = "http://localhost:7000/reimbursements/";
+        xhr.open("GET", url, true);
+
+        xhr.send();
+    }
+
+    function populateTable(reimbursement) {
+
+        let remid = document.getElementById("remid");
+        remid.innerHTML = "2";
+
+        remid.innerHTML = reimbursement.id;
+        Just.innerHTML = reimbursement.justification;
+        Time.innerHTML = reimbursement.timeOut;
+        EventType.innerHTML = reimbursement.event_type;
+        Start.innerHTML = reimbursement.startDate;
+        End.innerHTML = reimbursement.endDate;
+        Loc.innerHTML = reimbursement.location;
+        Cost.innerHTML = reimbursement.cost;
+        Covg.innerHTML = reimbursement.cost * (reimbursement.coverage * .01);
+        Descr.innerHTML = reimbursement.description;
+        Grading.innerHTML = reimbursement.gradingFormat;
+        Cutoff.innerHTML = reimbursement.cutoff;
+        //let msgNode = document.createElement("p");
+        //let fileNode = document.createElement("p");
+        //employeeNode.innerHTML = "Employee: " + reimbursement.employee.firstName + " " + reimbursement.employee.lastName;
+        Stat.innerHTML = reimbursement.status;
+
+    }
+
+    //window.onload = getReimbursement;
+
+</script>
+
+</html>

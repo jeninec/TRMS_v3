@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="css/app.css" rel="stylesheet">
+    <title>TRMS App</title>
+</head>
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">TRMS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link"  href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="employee.html">Employees</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active"  aria-current="page" href="dept.html">Departments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="reimbursements.html">Reimbursements</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
+              <!--li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li -->
+              
+            </ul>
+            <form class="d-flex">
+              <!--input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"-->
+              <button class="btn btn-outline-success" type="submit">Log In</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <br>
+    
+    
+    <div class="card" id="dept-card">
+        <div class="card-body">
+            <h1 class="title">Departments</h1>
+            <br>
+            <br>
+          <table id="dept-table" class="table table-bordered">
+            <thead>
+                <tr class="center">
+                    <th>Dept. Name</th>
+                    <th>Dept. Head</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="center">
+                    <td id="n2">Human Resources</td>
+                    <td id="h2">Jessica Day</td>
+                </tr>
+                <tr class="center">
+                    <td id="n3">Finance</td>
+                    <td id="h3">Cece Schmidt</td>
+                </tr>
+                
+                <!--tr id="result" class="center">
+                    <td id="n">-</td>
+                    <td id="h">-</td>
+                </tr-->
+                
+            </tbody>
+            <!--tr>
+                <th>Name</th>
+                <th>Head</th>
+                <th>View</th>
+            </tr>
+            <tr>
+                <td>Human Resources</td>
+                <td>Jessica Day</td>
+                <td><button type="button" class="btn btn-secondary">Update Dept.</button></td>
+            </tr-->
+          </table>
+
+          <a href="about.html" type="button" class="btn btn-primary">Back to About</a>
+        </div>
+      </div>
+</body>
+
+<script>
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+
+            if (this.readyState == 4 & this.status == 200) {
+                console.log(this.responseText);
+
+                let depts = JSON.parse(this.responseText);
+
+                console.log(depts);
+
+                let dept = [];
+
+                depts.forEach(populateResult);
+                  
+
+            
+
+            function populateResult(dept){
+            //     let result = document.getElementById("result");
+            // result.innerHTML = '';
+
+                if (dept != null) {
+                    if (dept.name != null) {
+                        // let nameNode = document.createElement("td");
+                        // let headNode = document.createElement("td");
+
+                        // nameNode.innerHTML = dept.name;
+                        // headNode.innerHTML = dept.head;
+                        document.getElementById("n").innerHTML = dept.name;
+                        console.log(dept.name);
+                        document.getElementById("h").innerHTML = dept.head;
+
+                        // result.appendChild(nameNode);
+                        // result.appendChild(headNode);
+
+                    }
+                }
+            }  
+            
+        }
+        };
+
+        url = "http://localhost:7000/departments/";
+        xhr.open("GET", url, true);
+
+        xhr.send();
+
+        
+
+    
+
+
+</script>
+
+</html>
