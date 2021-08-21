@@ -35,10 +35,10 @@ To-do list:
 
 * Import application into IDE that can handle Spring projects
 * The user must start by adding database credentials to the application.properties file
-* Run CandyCompanyApplication.java as Spring App to start the project and to create and populate the database
-* Open CandyWarehouseNG folder in Visual Studio Code open cmd prompt terminal run "npm i" command and then "ng serve" command
-* Go to browser and enter localhost:4200
-* View all the features as listed above. Operates like e-commerce website
+* Run the SQL Script to create and populate the database
+* Run App2.java as a Java App to start the project and to create and populate the database
+* Open index.html in the browser
+* View all the features as listed above. 
 
 ## Contributors
 
